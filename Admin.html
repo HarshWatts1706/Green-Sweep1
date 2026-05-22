@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complaint Management Center | GreenSweep Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="Admin.css" />
+</head>
+<body>
+
+  <!-- ── Sidebar toggle (CSS checkbox hack) ── -->
+  <input type="checkbox" id="sidebarToggle" class="sidebar-checkbox" />
+
+  <!-- Overlay -->
+  <label for="sidebarToggle" class="sidebar-overlay"></label>
+
+  <!-- Sliding Side Panel -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <span class="material-symbols-outlined logo-icon">eco</span>
+        <strong>GreenSweep Admin</strong>
+      </div>
+      <label for="sidebarToggle" class="sidebar-close">
+        <span class="material-symbols-outlined">close</span>
+      </label>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="Home.html">Home</a>
+      <a href="Awarness.html">Awareness</a>
+      <a href="report.html">Report</a>
+      <a href="Admin.html" class="active">Admin</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <button class="btn-primary sidebar-signin">Admin Profile</button>
+    </div>
+  </div>
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="logo">
+        <span class="material-symbols-outlined logo-icon">eco</span>
+        <strong>GreenSweep Admin</strong>
+      </div>
+      <nav class="desktop-nav">
+        <a href="Home.html">Home</a>
+        <a href="Awarness.html">Awareness</a>
+        <a href="report.html">Report</a>
+        <a href="Admin.html" class="active">Admin</a>
+      </nav>
+    </div>
+
+    <!-- Desktop right -->
+    <div class="topbar-right desktop-right">
+      <div class="search-box">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input type="text" placeholder="Search ID or Location" />
+      </div>
+      <button class="btn-primary">Admin Profile</button>
+      <img
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcbjGy5BgaYMZVkcMr5P55JijQwr1xiHkZc5aJKBOCfD7nKR0VDAR9SBHji3nLVTpfhwZ1i0FynTQF0lOBEGQCHBavH31BvPtKLOcjqMofHfchoXHgc4ENzgIOg29xnJhtbVZJiKfa8_z107hkIvH4yIVSbqqtZw5vqVLug9eYfAXf8N0RdcRu2m7L-jPmHMAWGVPi3OIYsSO49knthCT_4KrtF7R99n-Ao81mEaE5BcLZFXtsrfJp_q2IUUbnD3_E_tL8yz6PIleP"
+        alt="Admin"
+        class="avatar"
+      />
+    </div>
+
+    <!-- Mobile: search + hamburger label -->
+    <div class="topbar-mobile-right">
+      <div class="search-box mobile-search">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input type="text" placeholder="Search ID or Location" />
+      </div>
+      <label for="sidebarToggle" class="hamburger">
+        <span class="material-symbols-outlined">menu</span>
+      </label>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Page Heading -->
+    <!-- Export Data button removed as requested -->
+    <div class="page-heading">
+      <div>
+        <h1>Complaint Management Center</h1>
+        <p>Review and resolve environmental reports submitted by citizens.</p>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────── -->
+    <!-- TABS + FILTER DROPDOWNS                        -->
+    <!-- Each tab has a data-status attribute that      -->
+    <!-- Admin.js reads to decide which cards to show.  -->
+    <!-- ─────────────────────────────────────────────── -->
+    <div class="filters-panel">
+
+      <!-- Tabs: filter by report status -->
+      <div class="tabs">
+        <!-- data-status tells Admin.js which filter to apply -->
+        <a href="#" class="tab" data-status="all">All Reports (6)</a>
+        <a href="#" class="tab active" data-status="pending">Pending (3)</a>
+        <a href="#" class="tab" data-status="in-progress">In Progress (2)</a>
+        <a href="#" class="tab" data-status="resolved">Resolved (1)</a>
+      </div>
+
+      <!-- Filter dropdowns row -->
+      <div class="filter-row">
+
+        <!-- ── HIGH URGENCY DROPDOWN ── -->
+        <!-- data-filter-type="urgency" tells Admin.js this controls urgency -->
+        <div class="filter-dropdown-wrapper" data-filter-type="urgency">
+          <button class="filter-btn">
+            <span class="material-symbols-outlined green filter-main-icon">priority_high</span>
+            <span class="filter-label">High Urgency</span>
+            <span class="material-symbols-outlined">expand_more</span>
+          </button>
+          <div class="dropdown-menu">
+            <!-- data-value is what gets saved to currentUrgency in Admin.js -->
+            <div class="dropdown-item selected" data-value="all">
+              <span class="material-symbols-outlined tiny">done_all</span>
+              <span class="item-label">All Urgency</span>
+            </div>
+            <div class="dropdown-item" data-value="high">
+              <span class="material-symbols-outlined tiny" style="color:#ef4444;">priority_high</span>
+              <span class="item-label">High</span>
+            </div>
+            <div class="dropdown-item" data-value="medium">
+              <span class="material-symbols-outlined tiny" style="color:#f59e0b;">remove</span>
+              <span class="item-label">Medium</span>
+            </div>
+            <div class="dropdown-item" data-value="low">
+              <span class="material-symbols-outlined tiny" style="color:#608a71;">south</span>
+              <span class="item-label">Low</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TRASH & LITTER TYPE DROPDOWN ── -->
+        <!-- data-filter-type="type" tells Admin.js this controls card type -->
+        <div class="filter-dropdown-wrapper" data-filter-type="type">
+          <button class="filter-btn">
+            <span class="material-symbols-outlined filter-main-icon">delete</span>
+            <span class="filter-label">Trash &amp; Litter</span>
+            <span class="material-symbols-outlined">expand_more</span>
+          </button>
+          <div class="dropdown-menu">
+            <div class="dropdown-item selected" data-value="all">
+              <span class="material-symbols-outlined tiny">done_all</span>
+              <span class="item-label">All Categories</span>
+            </div>
+            <div class="dropdown-item" data-value="trash">
+              <span class="material-symbols-outlined tiny">delete</span>
+              <span class="item-label">Trash &amp; Litter</span>
+            </div>
+            <div class="dropdown-item" data-value="sanitation">
+              <span class="material-symbols-outlined tiny">delete_sweep</span>
+              <span class="item-label">Sanitation</span>
+            </div>
+            <div class="dropdown-item" data-value="infrastructure">
+              <span class="material-symbols-outlined tiny">construction</span>
+              <span class="item-label">Infrastructure</span>
+            </div>
+            <div class="dropdown-item" data-value="graffiti">
+              <span class="material-symbols-outlined tiny">edit</span>
+              <span class="item-label">Graffiti</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── INFRASTRUCTURE TYPE DROPDOWN ── -->
+        <!-- Also data-filter-type="type" — shares the same filter variable -->
+        <div class="filter-dropdown-wrapper" data-filter-type="type">
+          <button class="filter-btn">
+            <span class="material-symbols-outlined filter-main-icon">construction</span>
+            <span class="filter-label">Infrastructure</span>
+            <span class="material-symbols-outlined">expand_more</span>
+          </button>
+          <div class="dropdown-menu">
+            <div class="dropdown-item selected" data-value="all">
+              <span class="material-symbols-outlined tiny">done_all</span>
+              <span class="item-label">All Categories</span>
+            </div>
+            <div class="dropdown-item" data-value="infrastructure">
+              <span class="material-symbols-outlined tiny">construction</span>
+              <span class="item-label">Infrastructure</span>
+            </div>
+            <div class="dropdown-item" data-value="trash">
+              <span class="material-symbols-outlined tiny">delete</span>
+              <span class="item-label">Trash &amp; Litter</span>
+            </div>
+            <div class="dropdown-item" data-value="sanitation">
+              <span class="material-symbols-outlined tiny">delete_sweep</span>
+              <span class="item-label">Sanitation</span>
+            </div>
+            <div class="dropdown-item" data-value="graffiti">
+              <span class="material-symbols-outlined tiny">edit</span>
+              <span class="item-label">Graffiti</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── LAST 7 DAYS DATE DROPDOWN ── -->
+        <!-- data-filter-type="days" tells Admin.js this controls the date range -->
+        <div class="filter-dropdown-wrapper" data-filter-type="days">
+          <button class="filter-btn">
+            <span class="material-symbols-outlined filter-main-icon">calendar_today</span>
+            <span class="filter-label">Last 7 Days</span>
+            <span class="material-symbols-outlined">expand_more</span>
+          </button>
+          <div class="dropdown-menu">
+            <!-- data-value is number of days to look back -->
+            <div class="dropdown-item" data-value="9999">
+              <span class="material-symbols-outlined tiny">all_inclusive</span>
+              <span class="item-label">All Time</span>
+            </div>
+            <div class="dropdown-item selected" data-value="7">
+              <span class="material-symbols-outlined tiny">calendar_today</span>
+              <span class="item-label">Last 7 Days</span>
+            </div>
+            <div class="dropdown-item" data-value="30">
+              <span class="material-symbols-outlined tiny">calendar_month</span>
+              <span class="item-label">Last 30 Days</span>
+            </div>
+            <div class="dropdown-item" data-value="1">
+              <span class="material-symbols-outlined tiny">today</span>
+              <span class="item-label">Today Only</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end .filter-row -->
+    </div><!-- end .filters-panel -->
+
+
+    <!-- ─────────────────────────────────────────────── -->
+    <!-- COMPLAINT CARDS GRID                           -->
+    <!-- Each card has data-* attributes so Admin.js    -->
+    <!-- knows how to filter and sort them.             -->
+    <!--                                                -->
+    <!-- data-status:  pending | in-progress | resolved -->
+    <!-- data-urgency: high | medium | low              -->
+    <!-- data-type:    trash | infrastructure |         -->
+    <!--               graffiti | sanitation            -->
+    <!-- data-days:    how many days ago it was filed   -->
+    <!-- ─────────────────────────────────────────────── -->
+    <div class="cards-grid">
+
+      <!-- ── Card 1: Illegal Dumping (Pending, High, Trash, 0 days ago) ── -->
+      <div class="complaint-card"
+           data-status="pending"
+           data-urgency="high"
+           data-type="trash"
+           data-days="0">
+        <div class="card-image">
+          <div class="card-img-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDO25oGdiu17cB7iBfzSNQF98wTi7DUBjrAhIZkoTD6RqZ0ZlDeVo_vkgrDpCvqT93nuxiYVptS1eody_BbHqCCnSogMMGR4T2GI1_GsTrdS1jwiMo-ZlYs0AP8EIx0xQcKiPAWoker_P45HCf-pY1b7D8Co1Lf2LyCsSsm4JoleuioZ-KT37oWsm8Z_9eni70tt1znKR7ZoZNMW6waDI85wtZCTrgkre75SDKb2GIKjyGIKWQ0PKGuWoJVUQxREtbX8vVvgZZXy59H');"></div>
+          <span class="card-tag urgent">Urgent</span>
+          <span class="card-photos">
+            <span class="material-symbols-outlined tiny">photo_camera</span> 4 Photos
+          </span>
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <h3>Illegal Dumping - Oak St</h3>
+            <span class="card-id">#RE-2941</span>
+          </div>
+          <p>Large pile of construction debris and old furniture blocking the sidewalk near the park entrance.</p>
+          <div class="card-meta">
+            <span><span class="material-symbols-outlined tiny">schedule</span> 2 hours ago · June 24, 2024</span>
+            <span class="green-link"><span class="material-symbols-outlined tiny">location_on</span> 45.4215° N, 75.6972° W</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-primary full">Mark as Resolved</button>
+            <button class="btn-icon"><span class="material-symbols-outlined">more_vert</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Card 2: Broken Streetlight (In Progress, Medium, Infrastructure, 0 days) ── -->
+      <div class="complaint-card"
+           data-status="in-progress"
+           data-urgency="medium"
+           data-type="infrastructure"
+           data-days="0">
+        <div class="card-image">
+          <div class="card-img-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDR-pun-W2nWO4f_yMn4TPnYMWZUcCcTPd7wTiD5ys54zncMTtdX0kHyeIaDNF-16VMPRMXRazF4B8Mfp0nw06LFp4whlxSgDIOu9B28acDZG2mXkpi3KPWv5445Ftdc5zhIuMoFsoMy3y2q3ye6ZNFaSAQlBP31gGNjM0USneLUVVmrSR7MYLn6eykoEA6C_KgyMkzdTFGGxf6oIsAd6nttXGZzNyi64xPBN9aXl_1BfvAvzrRbcupNrNiV7cHbsoaC19KdRiUJxrU');"></div>
+          <span class="card-tag plain">Infrastructure</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <h3>Broken Streetlight - Main Ave</h3>
+            <span class="card-id">#RE-2938</span>
+          </div>
+          <p>Light pole #42 is flickering constantly and causing visibility issues at the intersection.</p>
+          <div class="card-meta">
+            <span><span class="material-symbols-outlined tiny">schedule</span> 5 hours ago · June 24, 2024</span>
+            <span class="green-link"><span class="material-symbols-outlined tiny">location_on</span> 45.4231° N, 75.6911° W</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-primary full">Mark as Resolved</button>
+            <button class="btn-icon"><span class="material-symbols-outlined">more_vert</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Card 3: Graffiti (Pending, Low, Graffiti, 1 day ago) ── -->
+      <div class="complaint-card"
+           data-status="pending"
+           data-urgency="low"
+           data-type="graffiti"
+           data-days="1">
+        <div class="card-image">
+          <div class="card-img-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuASqT9NBHQxJ5Rzg7Xzgd0wcVJ_-z68UcC2QvcgzHag-xnCMBpL9t4TiwL8gDcb8vY4D0xhyQqlids7lTB-eW_Z1ooc2vteNYUAkxfl_13UHzmuO2jC0_4IIjhR7rDiqq1y8wamehe2Dbiu9oUebE-WzX0cTtqR3XOBxSbYp5l6RT_yrI_RoFkaqzUd3PrWsoaxfmP7qBpw8o9PJaRyAXmEiRJpYlQU-k7eh6uQqjOjiJxBlh0UqCAx_N8tyspisE1qXT98IkQZcfAg');"></div>
+          <span class="card-tag plain">Graffiti</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <h3>Graffiti - Central Park</h3>
+            <span class="card-id">#RE-2922</span>
+          </div>
+          <p>New graffiti tags discovered on several benches and the historical information plaque.</p>
+          <div class="card-meta">
+            <span><span class="material-symbols-outlined tiny">schedule</span> 1 day ago · June 23, 2024</span>
+            <span class="green-link"><span class="material-symbols-outlined tiny">location_on</span> 45.4198° N, 75.7003° W</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-primary full">Mark as Resolved</button>
+            <button class="btn-icon"><span class="material-symbols-outlined">more_vert</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Card 4: Overflowing Bin (Pending, Medium, Sanitation, 1 day ago) ── -->
+      <div class="complaint-card"
+           data-status="pending"
+           data-urgency="medium"
+           data-type="sanitation"
+           data-days="1">
+        <div class="card-image">
+          <div class="card-img-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDn229LpB1aJasis-W5BFo7X_i1apS7VtsKXBVW6QeqzIowjXwlmAMP7sQH_Hx6PquYh1bE-OF0iPBQ9T7ITck0Hiq7cX9sbVm63BdeUbLlkUc7U1PryvplCcnOQdf-w4LdniRUJZzeBuc7AjoJUEP5ppZILIJ6mKZY8XBelCrCzpquv10Szs2CAsGmq8_YwduHjP2Jt5oIEVfOyovOg27phNknCydsc8kTLtkRX3q-cxkfzeOiyAeQJ_oQHr5N99Gbj219LIxkpDsk');"></div>
+          <span class="card-tag plain">Sanitation</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <h3>Overflowing Bin - 5th St</h3>
+            <span class="card-id">#RE-2915</span>
+          </div>
+          <p>The public waste bin at the bus stop is completely full and trash is spilling onto the pavement.</p>
+          <div class="card-meta">
+            <span><span class="material-symbols-outlined tiny">schedule</span> 1 day ago · June 23, 2024</span>
+            <span class="green-link"><span class="material-symbols-outlined tiny">location_on</span> 45.4200° N, 75.6890° W</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-primary full">Mark as Resolved</button>
+            <button class="btn-icon"><span class="material-symbols-outlined">more_vert</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Card 5: Pothole (In Progress, Medium, Infrastructure, 2 days ago) ── -->
+      <div class="complaint-card"
+           data-status="in-progress"
+           data-urgency="medium"
+           data-type="infrastructure"
+           data-days="2">
+        <div class="card-image">
+          <div class="card-img-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRp03JL7Js5iqgHAorhLb2TWG31wTekz9dOGJWi-Vuwo-9S-epSPx4ixT8IBzZ6qbN2VUTYaQOjlKhKDwrAxUYGw20zjBU4tX_pZ65Eo1gdroprBctuNt3X2SmhWi7_gKi8QLGki6OJONGpTi65vmnUdsUqxGiJ0R_4Bbag-GoIUDJf7euifAOXIorn7uq1tdLNTmdFAlEOdDQk-l6HavxfErCQm06gB7I-JaZ72LuNB6jN6qjOLbIUxnYGU2Ub20I1B_7D3MU5YN_');"></div>
+          <span class="card-tag plain">Infrastructure</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <h3>Pothole - River Rd</h3>
+            <span class="card-id">#RE-2901</span>
+          </div>
+          <p>Dangerous pothole approximately 1ft deep on the northbound lane. Cars are swerving to avoid it.</p>
+          <div class="card-meta">
+            <span><span class="material-symbols-outlined tiny">schedule</span> 2 days ago · June 22, 2024</span>
+            <span class="green-link"><span class="material-symbols-outlined tiny">location_on</span> 45.4250° N, 75.6950° W</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-primary full">Mark as Resolved</button>
+            <button class="btn-icon"><span class="material-symbols-outlined">more_vert</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Card 6: Water Leak (Resolved, High, Infrastructure, 3 days ago) ── -->
+      <div class="complaint-card"
+           data-status="resolved"
+           data-urgency="high"
+           data-type="infrastructure"
+           data-days="3">
+        <div class="card-image">
+          <div class="card-img-bg" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtPKCxzn9jX-BJAtXDV7x2c5RJEirJft8_EoPrpckkjnCPZujd3obHZPkfbpdXCLm4_hxRrzPum167H1yli33OguTMY12U7qsBiKuBVNxZCvsrwYkfs8-GizHi6_mlNXTJr-Wq_hqV8mBi6kfXS97fxL9u6BAz_qjgHsKXkoVCQddtW59vgPI03p-jWYGMlPW5UyTt0rv8ehiOMfuLliRswDUz7YD4-Tm777Ldc99-2Cx4DV0VRnLbyLGS4IrIl9EXahoMvAoeRggs');"></div>
+          <span class="card-tag urgent">Critical</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <h3>Water Leak - Sunset Blvd</h3>
+            <span class="card-id">#RE-2884</span>
+          </div>
+          <p>Main water pipe burst. Significant water flooding the street and sidewalk area. Urgent attention needed.</p>
+          <div class="card-meta">
+            <span><span class="material-symbols-outlined tiny">schedule</span> 3 days ago · June 21, 2024</span>
+            <span class="green-link"><span class="material-symbols-outlined tiny">location_on</span> 45.4180° N, 75.7050° W</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-primary full">Mark as Resolved</button>
+            <button class="btn-icon"><span class="material-symbols-outlined">more_vert</span></button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end .cards-grid -->
+
+
+    <!-- ─────────────────────────────────────────────── -->
+    <!-- PAGINATION                                     -->
+    <!-- Only 2 pages max, only buttons 1 and 2 shown. -->
+    <!-- Admin.js handles show/hide of page 2 button.  -->
+    <!-- ─────────────────────────────────────────────── -->
+    <div class="pagination" id="pagination-container">
+
+      <!-- Previous button -->
+      <button class="page-btn" id="page-btn-prev">
+        <span class="material-symbols-outlined">chevron_left</span>
+      </button>
+
+      <!-- Page 1 button (always visible) -->
+      <button class="page-btn active" id="page-btn-1">1</button>
+
+      <!-- Page 2 button (shown only when there are 4+ filtered cards) -->
+      <button class="page-btn" id="page-btn-2">2</button>
+
+      <!-- Next button -->
+      <button class="page-btn" id="page-btn-next">
+        <span class="material-symbols-outlined">chevron_right</span>
+      </button>
+
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 GreenSweep Municipal Management System. All rights reserved.</p>
+  </footer>
+
+  <!-- Load Admin.js at the bottom so all HTML is ready before JS runs -->
+  <script src="auth.js"></script>
+  <script src="Admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Municipal Admin Dashboard - GreenSweep</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="Dashboard.css" />
+</head>
+<body>
+
+  <!-- Sidebar toggle checkbox -->
+  <input type="checkbox" id="sidebarToggle" class="sidebar-checkbox" />
+  <!-- Overlay -->
+  <label for="sidebarToggle" class="sidebar-overlay"></label>
+
+  <div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <!-- Close button (mobile) -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+          <div class="logo">
+            <span class="material-symbols-outlined logo-icon">eco</span>
+            <strong>GreenSweep</strong>
+          </div>
+          <label for="sidebarToggle" class="sidebar-close-btn">
+            <span class="material-symbols-outlined">close</span>
+          </label>
+        </div>
+
+        <nav class="sidenav">
+          <a href="Dashboard.html" class="sidenav-link active">
+            <span class="material-symbols-outlined">dashboard</span> Dashboard
+          </a>
+          <a href="Report.html" class="sidenav-link">
+            <span class="material-symbols-outlined">report</span> Reports
+          </a>
+          <a href="Home.html" class="sidenav-link">
+            <span class="material-symbols-outlined">home</span> Home
+          </a>
+          <a href="Awarness.html" class="sidenav-link">
+            <span class="material-symbols-outlined">campaign</span> Awareness Campaigns
+          </a>
+          <a href="Admin.html" class="sidenav-link">
+            <span class="material-symbols-outlined">settings</span> Admin Settings
+          </a>
+        </nav>
+      </div>
+
+      <!-- ✅ Fixed: redirects to Report.html instead of showing an alert -->
+      <button class="report-from-admin" onclick="window.location.href='Report.html'">
+        <span class="material-symbols-outlined">add</span> New Report
+      </button>
+    </aside>
+
+    <!-- Main -->
+    <div class="main-area">
+
+      <!-- Top Header -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <!-- Hamburger (mobile only) -->
+          <label for="sidebarToggle" class="hamburger-btn">
+            <span class="material-symbols-outlined" style="font-size:26px;">menu</span>
+          </label>
+          <h2>Admin Dashboard</h2>
+          <div class="search-box">
+            <span class="material-symbols-outlined search-icon">search</span>
+            <input type="text" id="dashboardSearch" placeholder="Search reports, users, or locations..." />
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button class="icon-btn" id="notifBtn">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="badge"></span>
+          </button>
+          <button class="icon-btn">
+            <span class="material-symbols-outlined">chat_bubble</span>
+          </button>
+          <!-- JS fills this with the logged-in user's name and role -->
+          <div class="user-info" id="dashUserInfo">
+            <div>
+              <strong id="dashUserName">GreenSweep Admin</strong>
+              <small id="dashUserRole">Dashboard</small>
+            </div>
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcbjGy5BgaYMZVkcMr5P55JijQwr1xiHkZc5aJKBOCfD7nKR0VDAR9SBHji3nLVTpfhwZ1i0FynTQF0lOBEGQCHBavH31BvPtKLOcjqMofHfchoXHgc4ENzgIOg29xnJhtbVZJiKfa8_z107hkIvH4yIVSbqqtZw5vqVLug9eYfAXf8N0RdcRu2m7L-jPmHMAWGVPi3OIYsSO49knthCT_4KrtF7R99n-Ao81mEaE5BcLZFXtsrfJp_q2IUUbnD3_E_tL8yz6PIleP"
+              alt="Admin"
+              class="avatar"
+              id="dashAvatar"
+            />
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="content">
+
+        <div class="page-heading">
+          <h1>Overview</h1>
+          <p>Monitoring environmental reports and urban resolution progress.</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card" onclick="window.location.href='Admin.html'">
+            <div class="stat-card-top">
+              <span class="stat-label">Total Reports</span>
+              <span class="material-symbols-outlined stat-icon green">assessment</span>
+            </div>
+            <p class="stat-value" id="stat-total">1,248</p>
+            <div class="stat-footer">
+              <span class="material-symbols-outlined small green">trending_up</span>
+              <span class="green bold">+12.5%</span>
+              <span class="muted">from last month</span>
+            </div>
+          </div>
+
+          <div class="stat-card" onclick="window.location.href='Admin.html'">
+            <div class="stat-card-top">
+              <span class="stat-label">Pending Action</span>
+              <span class="material-symbols-outlined stat-icon amber">pending_actions</span>
+            </div>
+            <p class="stat-value" id="stat-pending">84</p>
+            <div class="stat-footer">
+              <span class="badge-pill red">High Priority</span>
+              <span class="muted">Require attention</span>
+            </div>
+          </div>
+
+          <div class="stat-card" onclick="window.location.href='Admin.html'">
+            <div class="stat-card-top">
+              <span class="stat-label">Resolved Issues</span>
+              <span class="material-symbols-outlined stat-icon green">verified</span>
+            </div>
+            <p class="stat-value" id="stat-resolved">1,164</p>
+            <div class="stat-footer">
+              <span class="material-symbols-outlined small green">check_circle</span>
+              <span class="green bold">93.4%</span>
+              <span class="muted">Success Rate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reports Table -->
+        <div class="card">
+          <div class="card-header">
+            <h2>Recent Incident Reports</h2>
+            <button class="link-btn" onclick="window.location.href='Admin.html'">View All</button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Report ID</th>
+                  <th>Issue Type</th>
+                  <th>Citizen</th>
+                  <th>Location</th>
+                  <th>Priority</th>
+                  <th>Status</th>
+                  <th class="text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="reportsTableBody">
+                <tr>
+                  <td><strong>#CC-8429</strong></td>
+                  <td>
+                    <span class="material-symbols-outlined small muted">delete_outline</span>
+                    Illegal Dumping
+                  </td>
+                  <td>Marcus Thorne</td>
+                  <td>Greenwich Park</td>
+                  <td><span class="badge-pill red">High</span></td>
+                  <td>
+                    <span class="dot amber"></span> In Review
+                  </td>
+                  <td class="text-right">
+                    <button class="icon-btn small"><span class="material-symbols-outlined">more_vert</span></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#CC-8428</strong></td>
+                  <td>
+                    <span class="material-symbols-outlined small muted">water_drop</span>
+                    Water Leakage
+                  </td>
+                  <td>Elena Rodriguez</td>
+                  <td>2nd &amp; Main St.</td>
+                  <td><span class="badge-pill amber">Medium</span></td>
+                  <td>
+                    <span class="dot green"></span> Resolved
+                  </td>
+                  <td class="text-right">
+                    <button class="icon-btn small"><span class="material-symbols-outlined">more_vert</span></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#CC-8427</strong></td>
+                  <td>
+                    <span class="material-symbols-outlined small muted">edit_road</span>
+                    Vandalism
+                  </td>
+                  <td>John Doe</td>
+                  <td>East Tunnel</td>
+                  <td><span class="badge-pill grey">Low</span></td>
+                  <td>
+                    <span class="dot grey"></span> Pending
+                  </td>
+                  <td class="text-right">
+                    <button class="icon-btn small"><span class="material-symbols-outlined">more_vert</span></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#CC-8426</strong></td>
+                  <td>
+                    <span class="material-symbols-outlined small muted">light_mode</span>
+                    Street Light Out
+                  </td>
+                  <td>Sarah Williams</td>
+                  <td>Maple Avenue</td>
+                  <td><span class="badge-pill red">High</span></td>
+                  <td>
+                    <span class="dot blue"></span> Dispatched
+                  </td>
+                  <td class="text-right">
+                    <button class="icon-btn small"><span class="material-symbols-outlined">more_vert</span></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card-footer">
+            <span class="muted" id="tableFooterText">Showing 1 to 4 of 1,248 reports</span>
+            <div class="pagination">
+              <button onclick="window.location.href='Admin.html'">View All Reports</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end .content -->
+    </div><!-- end .main-area -->
+  </div><!-- end .layout -->
+
+  <!-- auth.js must load before Dashboard.js -->
+  <script src="auth.js"></script>
+  <script src="Dashboard.js"></script>
+</body>
+</html>

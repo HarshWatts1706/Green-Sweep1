@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Environmental Awareness Hub | GreenSweep</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="Awarness.css" />
+</head>
+<body>
+
+  <!-- ── Sidebar toggle (CSS checkbox hack) ── -->
+  <input type="checkbox" id="sidebarToggle" class="sidebar-checkbox" />
+
+  <!-- Overlay -->
+  <label for="sidebarToggle" class="sidebar-overlay"></label>
+
+  <!-- Sliding Side Panel -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <span class="material-symbols-outlined logo-icon">eco</span>
+        <strong>GreenSweep</strong>
+      </div>
+      <label for="sidebarToggle" class="sidebar-close">
+        <span class="material-symbols-outlined">close</span>
+      </label>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="Home.html">Home</a>
+      <a href="Awarness.html" class="active">Awareness</a>
+      <a href="report.html">Report</a>
+      <a href="Admin.html">Admin</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div id="sidebarUserArea">
+        <a href="Login.html?next=Awarness.html" class="btn-primary sidebar-signin">Sign In</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Nav -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="logo">
+        <span class="material-symbols-outlined logo-icon">eco</span>
+        <strong>GreenSweep</strong>
+      </div>
+      <nav class="desktop-nav">
+        <a href="Home.html">Home</a>
+        <a href="Awarness.html" class="active">Awareness</a>
+        <a href="report.html">Report</a>
+        <a href="Admin.html">Admin</a>
+      </nav>
+    </div>
+
+    <!-- Desktop right -->
+    <div class="topbar-right desktop-right">
+      <div class="search-box">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input type="text" placeholder="Search topics..." />
+      </div>
+      <button class="btn-primary" id="desktopAuthBtn">Sign In</button>
+    </div>
+
+    <!-- Mobile: search + hamburger label -->
+    <div class="topbar-mobile-right">
+      <div class="search-box mobile-search">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input type="text" placeholder="Search topics..." />
+      </div>
+      <label for="sidebarToggle" class="hamburger">
+        <span class="material-symbols-outlined">menu</span>
+      </label>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-image" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDLbNgkvAKesAZQP8XFGunp9gS7hv7dihjadCsLnDC67xxYNz6CNmCsdyH5Gv0yPo9Iz6QCAKuBuc7ql7uLcUiVSWvJXgtiCKDGhkqfFBQ5entg6PNXSBVWroitVXiNkLMny3_wnsA84YGVcIhg0y3bicNxnvhWSrQotXMXvUjYr6TinXYntizYLvH34jtAD9O6aXGOYvk4LhjEZiZPr360bflqpTdDA5FZBEJ_4xplS07rTb32Z6847H4v9EcqnfckbwFVNijON3VY');">
+      </div>
+      <div class="hero-text">
+        <h1>Every Action Counts for a <span class="text-green">Cleaner City</span></h1>
+        <p>Explore real-time environmental data and learn how your daily habits impact our local ecosystem. Join 15,000+ citizens making a difference every day.</p>
+        <div class="hero-btns">
+          <a href="report.html"><button class="btn-primary">Take Action</button></a>
+          <button class="btn-secondary" onclick="document.getElementById('awareness-info').scrollIntoView({behavior:'smooth'})">Learn More</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vital Signs -->
+    <div class="section-header" id="awareness-info">
+      <h2 class="section-title">Environmental Vital Signs</h2>
+      <span class="muted small">
+        <span class="material-symbols-outlined tiny">schedule</span> Updated 5m ago
+      </span>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-top">
+          <span class="stat-label">Air Quality Index</span>
+          <span class="material-symbols-outlined green">air</span>
+        </div>
+        <div class="stat-value-row">
+          <span class="big-num">42</span>
+          <span class="green bold">Good</span>
+        </div>
+        <div class="stat-change green">
+          <span class="material-symbols-outlined tiny">arrow_downward</span> 12% vs last month
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:42%"></div></div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-top">
+          <span class="stat-label">Waste Diverted</span>
+          <span class="material-symbols-outlined green">recycling</span>
+        </div>
+        <div class="stat-value-row">
+          <span class="big-num">68%</span>
+          <span class="muted bold">Goal: 75%</span>
+        </div>
+        <div class="stat-change green">
+          <span class="material-symbols-outlined tiny">arrow_upward</span> 5% increase in recycling
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:68%"></div></div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-top">
+          <span class="stat-label">CO2 Reduced</span>
+          <span class="material-symbols-outlined green">cloud_done</span>
+        </div>
+        <div class="stat-value-row">
+          <span class="big-num">1,240</span>
+          <span class="muted bold">Tons</span>
+        </div>
+        <div class="stat-change green">
+          <span class="material-symbols-outlined tiny">arrow_upward</span> 8% this quarter
+        </div>
+        <div class="progress-bar"><div class="progress-fill" style="width:82%"></div></div>
+      </div>
+    </div>
+
+    <!-- Educational Topics -->
+    <div class="section-header">
+      <h2 class="section-title">Educational Topics</h2>
+      <button class="link-btn">View All Topics</button>
+    </div>
+
+    <div class="topic-grid">
+      <div class="topic-card">
+        <div class="topic-icon-area">
+          <span class="material-symbols-outlined big-icon">airwave</span>
+        </div>
+        <div class="topic-body">
+          <h3>Air Quality Basics</h3>
+          <p>Understand the AQI and how it affects your daily health outdoors.</p>
+          <span class="read-guide">Read Guide <span class="material-symbols-outlined tiny">chevron_right</span></span>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-icon-area">
+          <span class="material-symbols-outlined big-icon">delete_sweep</span>
+        </div>
+        <div class="topic-body">
+          <h3>Zero Waste Living</h3>
+          <p>Actionable steps to reduce your household waste by up to 50%.</p>
+          <span class="read-guide">Read Guide <span class="material-symbols-outlined tiny">chevron_right</span></span>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-icon-area">
+          <span class="material-symbols-outlined big-icon">bolt</span>
+        </div>
+        <div class="topic-body">
+          <h3>Smart Energy</h3>
+          <p>Save on bills and reduce footprint with smart home automation.</p>
+          <span class="read-guide">Read Guide <span class="material-symbols-outlined tiny">chevron_right</span></span>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-icon-area">
+          <span class="material-symbols-outlined big-icon">potted_plant</span>
+        </div>
+        <div class="topic-body">
+          <h3>Urban Farming</h3>
+          <p>Transform your balcony or windowsill into a green sanctuary.</p>
+          <span class="read-guide">Read Guide <span class="material-symbols-outlined tiny">chevron_right</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Did You Know -->
+    <section class="did-you-know">
+      <div class="dyk-left">
+        <h2>Did you know?</h2>
+        <p class="quote">"Recycling just one aluminum can saves enough energy to run a TV for three hours."</p>
+        <div class="tags">
+          <span class="tag">#EcoTips</span>
+          <span class="tag">#SaveEnergy</span>
+          <span class="tag">#Recycle</span>
+        </div>
+      </div>
+
+      <!-- Quiz: pure HTML radio buttons -->
+      <div class="quiz-card">
+        <h4><span class="material-symbols-outlined green">quiz</span> Weekly Quiz</h4>
+        <p>How many trees are needed to offset the average citizen's CO2?</p>
+        <div class="quiz-options">
+
+          <input type="radio" name="quiz" id="qA" class="quiz-radio" />
+          <label for="qA" class="quiz-btn">A) 15 Trees</label>
+
+          <input type="radio" name="quiz" id="qB" class="quiz-radio" />
+          <label for="qB" class="quiz-btn">B) 31 Trees</label>
+
+          <input type="radio" name="quiz" id="qC" class="quiz-radio quiz-correct" />
+          <label for="qC" class="quiz-btn quiz-btn-correct">C) 52 Trees</label>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ using <details> / <summary> — pure HTML, no JS -->
+    <div class="faq-section">
+      <h2>Common Questions</h2>
+
+      <details class="faq-item" open>
+        <summary class="faq-toggle">
+          How can I report illegal waste dumping in my neighborhood?
+          <span class="material-symbols-outlined faq-icon">expand_more</span>
+        </summary>
+        <div class="faq-answer">
+          You can use our 'Report' tab in the navigation bar. Simply snap a photo, pin the location,
+          and our municipal team will be notified immediately for cleanup.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-toggle">
+          What are the new recycling categories starting next month?
+          <span class="material-symbols-outlined faq-icon">expand_more</span>
+        </summary>
+        <div class="faq-answer">
+          Starting next month, we're introducing e-waste, soft plastics, and organic composting as new categories.
+          Look for the color-coded bins being rolled out across all neighborhoods.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-toggle">
+          How is the city measuring the CO2 reduction?
+          <span class="material-symbols-outlined faq-icon">expand_more</span>
+        </summary>
+        <div class="faq-answer">
+          The city uses a combination of IoT sensors, satellite data, and third-party audits to calculate
+          CO2 reduction. Reports are published quarterly and available on our Dashboard.
+        </div>
+      </details>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="material-symbols-outlined logo-icon">eco</span>
+          <strong>GreenSweep</strong>
+        </div>
+        <p>Empowering citizens to take charge of their local environment through data and community action.</p>
+        <div class="footer-icons">
+          <a href="#"><span class="material-symbols-outlined">public</span></a>
+          <a href="#"><span class="material-symbols-outlined">mail</span></a>
+          <a href="#"><span class="material-symbols-outlined">share</span></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Navigate</h5>
+          <a href="Home.html">Home</a>
+          <a href="Awarness.html">Awareness</a>
+          <a href="report.html">Report</a>
+          <a href="Admin.html">Admin</a>
+        </div>
+        <div class="footer-col">
+          <h5>Role / No</h5>
+          <a href="#">Citizen</a>
+          <a href="#">Volunteer</a>
+          <a href="#">Municipality</a>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 GreenSweep Environmental Hub. All rights reserved.
+    </div>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      var user = getCurrentUser();
+      var desktopBtn = document.getElementById('desktopAuthBtn');
+      var sidebarArea = document.getElementById('sidebarUserArea');
+      if (user) {
+        var firstName = user.name ? user.name.split(' ')[0] : user.email;
+        desktopBtn.textContent = 'Hi, ' + firstName;
+        desktopBtn.onclick = function () { logoutUser(); };
+        sidebarArea.innerHTML = '<button class="btn-primary sidebar-signin" onclick="logoutUser()">Log Out</button>';
+      } else {
+        desktopBtn.textContent = 'Sign In';
+        desktopBtn.onclick = function () { window.location.href = 'Login.html?next=Awarness.html'; };
+        sidebarArea.innerHTML = '<a href="Login.html?next=Awarness.html" class="btn-primary sidebar-signin">Sign In</a>';
+      }
+    });
+  </script>
+
+</body>
+</html>

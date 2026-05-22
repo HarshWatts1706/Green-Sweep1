@@ -1,0 +1,425 @@
+/* ══════════════════════════════════════════
+   Login.css  —  GreenSweep Login / Sign Up
+   Same colour palette and component style
+   as every other page in the project.
+   ══════════════════════════════════════════ */
+
+
+/* ── Reset ───────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  background: #f5f8f7;
+  color: #111814;
+  min-height: 100vh;
+  /* flex column so the footer (if any) sticks to the bottom */
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* ── Material Icons ──────────────────────── */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-size: 20px;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+
+/* ══════════════════════════════════════════
+   TOP BAR  (matches every other page)
+   ══════════════════════════════════════════ */
+.topbar {
+  background: #fff;
+  border-bottom: 1px solid #dbe6df;
+  padding: 12px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.logo-icon {
+  color: #0df269;
+  font-size: 28px;
+}
+
+.desktop-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.desktop-nav a {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111814;
+  padding-bottom: 2px;
+  transition: color 0.15s;
+}
+
+.desktop-nav a:hover {
+  color: #0df269;
+}
+
+
+/* ══════════════════════════════════════════
+   MAIN LAYOUT
+   Two-column:  card  |  promo panel
+   ══════════════════════════════════════════ */
+.auth-wrapper {
+  flex: 1;                       /* fill the remaining vertical space */
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 48px 24px;
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+
+/* ══════════════════════════════════════════
+   AUTH CARD  (the white box)
+   ══════════════════════════════════════════ */
+.auth-card {
+  background: #fff;
+  border: 1px solid #dbe6df;
+  border-radius: 16px 0 0 16px;
+  padding: 40px 36px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+}
+
+
+/* ── Brand area at top of card ───────────── */
+.auth-brand {
+  text-align: center;
+}
+
+.brand-icon {
+  /* Material icon, but we want it bigger here */
+  font-size: 44px;
+  color: #0df269;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.auth-brand h1 {
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.brand-tagline {
+  font-size: 13px;
+  color: #608a71;
+}
+
+
+/* ── Tab bar: Login / Sign Up ────────────── */
+.tab-bar {
+  display: flex;
+  background: #f0f5f2;
+  border-radius: 10px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 9px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #608a71;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.tab-btn.active {
+  background: #fff;
+  color: #111814;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ══════════════════════════════════════════
+   ALERT BOX
+   Shown with .alert--error or .alert--success
+   Hidden by default with .alert--hidden
+   ══════════════════════════════════════════ */
+.alert {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  /* smooth appearance */
+  transition: opacity 0.2s;
+}
+
+.alert--hidden {
+  display: none;
+}
+
+.alert--error {
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+}
+
+.alert--success {
+  background: rgba(13, 242, 105, 0.15);
+  color: #065f46;
+  border: 1px solid rgba(13, 242, 105, 0.4);
+}
+
+
+/* ══════════════════════════════════════════
+   FORMS
+   ══════════════════════════════════════════ */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Hidden form (JS toggles this class) */
+.auth-form--hidden {
+  display: none;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Small note inside the label e.g. "(min 6 characters)" */
+.label-note {
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+
+/* ── Input with icon on the left ─────────── */
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  /* Left decorative icon */
+  position: absolute;
+  left: 11px;
+  color: #608a71;
+  font-size: 18px;
+  pointer-events: none;    /* clicks pass through to the input */
+}
+
+.form-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 44px 0 40px;  /* space for left icon + right button */
+  border: 1px solid #dbe6df;
+  border-radius: 8px;
+  background: #f9fafb;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-input:focus {
+  border-color: #0df269;
+}
+
+
+/* ── Show/hide password button ───────────── */
+.toggle-pw {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #608a71;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.toggle-pw:hover {
+  color: #111814;
+  background: #f0f5f2;
+}
+
+
+/* ── Hint text (default admin credentials) ── */
+.hint {
+  font-size: 12px;
+  color: #9ca3af;
+  background: #f9fafb;
+  border: 1px dashed #dbe6df;
+  border-radius: 6px;
+  padding: 8px 12px;
+  line-height: 1.5;
+}
+
+.hint strong {
+  color: #374151;
+}
+
+
+/* ── Submit button ───────────────────────── */
+.btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px;
+  background: #0df269;
+  color: #111814;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(13, 242, 105, 0.25);
+  transition: filter 0.15s, transform 0.1s;
+}
+
+.btn-submit:hover {
+  filter: brightness(0.94);
+}
+
+.btn-submit:active {
+  transform: scale(0.98);
+}
+
+
+/* ══════════════════════════════════════════
+   PROMO SIDE PANEL  (right column)
+   ══════════════════════════════════════════ */
+.auth-side {
+  flex: 0 0 300px;
+  background: #111814;
+  border-radius: 0 16px 16px 0;
+  display: flex;
+  align-items: center;
+  padding: 40px 32px;
+  color: #fff;
+}
+
+.auth-side-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.side-icon {
+  font-size: 48px;
+  color: #0df269;
+  display: block;
+}
+
+.auth-side-content h2 {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.auth-side-content p {
+  font-size: 13px;
+  color: #9ca3af;
+  line-height: 1.65;
+}
+
+.side-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.side-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.side-list-icon {
+  color: #0df269;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════ */
+@media (max-width: 760px) {
+  .topbar {
+    padding: 12px 16px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  /* Stack the two columns vertically */
+  .auth-wrapper {
+    flex-direction: column;
+    padding: 24px 16px;
+  }
+
+  /* Card becomes full-width with all rounded corners */
+  .auth-card {
+    border-radius: 16px;
+    padding: 28px 20px;
+  }
+
+  /* Hide the promo panel — not needed on small screens */
+  .auth-side {
+    display: none;
+  }
+}

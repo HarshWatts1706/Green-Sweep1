@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Sign Up | GreenSweep</title>
+
+  <!-- Material icons (same as every other GreenSweep page) -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <!-- Our stylesheet -->
+  <link rel="stylesheet" href="Login.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       TOP BAR  (same layout as every other page)
+       ══════════════════════════════════════════ -->
+  <header class="topbar">
+    <a href="Home.html" class="logo">
+      <span class="material-symbols-outlined logo-icon">eco</span>
+      <strong>GreenSweep</strong>
+    </a>
+
+    <nav class="desktop-nav">
+      <a href="Home.html">Home</a>
+      <a href="Awarness.html">Awareness</a>
+      <a href="Report.html">Report</a>
+    </nav>
+  </header>
+
+
+  <!-- ══════════════════════════════════════════
+       MAIN LAYOUT  — card on left, promo on right
+       ══════════════════════════════════════════ -->
+  <main class="auth-wrapper">
+
+    <!-- ── White card ── -->
+    <div class="auth-card">
+
+      <!-- Brand mark at the top -->
+      <div class="auth-brand">
+        <span class="material-symbols-outlined brand-icon">eco</span>
+        <h1>GreenSweep</h1>
+        <p class="brand-tagline">Join the community making cities cleaner</p>
+      </div>
+
+      <!-- Tab switcher: Login vs Sign Up -->
+      <div class="tab-bar">
+        <button class="tab-btn active" id="btnLogin"  onclick="showTab('login')">Login</button>
+        <button class="tab-btn"        id="btnSignup" onclick="showTab('signup')">Sign Up</button>
+      </div>
+
+      <!-- Alert box — shown on error or success, hidden by default via CSS class -->
+      <div class="alert alert--hidden" id="alertBox"></div>
+
+
+      <!-- ════════════ LOGIN FORM ════════════ -->
+      <form class="auth-form" id="loginForm" novalidate>
+
+        <div class="form-group">
+          <label for="loginEmail">Email Address</label>
+          <div class="input-wrap">
+            <span class="material-symbols-outlined input-icon">mail</span>
+            <input
+              type="email"
+              id="loginEmail"
+              class="form-input"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <div class="input-wrap">
+            <span class="material-symbols-outlined input-icon">lock</span>
+            <input
+              type="password"
+              id="loginPassword"
+              class="form-input"
+              placeholder="Your password"
+              autocomplete="current-password"
+              required
+            />
+            <button type="button" class="toggle-pw" id="toggleLoginPw" aria-label="Show password">
+              <span class="material-symbols-outlined">visibility</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hint about the default admin account -->
+        <p class="hint">
+          Default admin — <strong>admin@greensweep.com</strong> / <strong>admin123</strong>
+        </p>
+
+        <button type="submit" class="btn-submit">
+          <span class="material-symbols-outlined">login</span>
+          Login
+        </button>
+
+      </form>
+
+
+      <!-- ════════════ SIGN UP FORM ════════════ -->
+      <!-- Hidden by default; JS swaps between the two forms -->
+      <form class="auth-form auth-form--hidden" id="signupForm" novalidate>
+
+        <div class="form-group">
+          <label for="signupName">Full Name</label>
+          <div class="input-wrap">
+            <span class="material-symbols-outlined input-icon">person</span>
+            <input
+              type="text"
+              id="signupName"
+              class="form-input"
+              placeholder="Your full name"
+              autocomplete="name"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="signupEmail">Email Address</label>
+          <div class="input-wrap">
+            <span class="material-symbols-outlined input-icon">mail</span>
+            <input
+              type="email"
+              id="signupEmail"
+              class="form-input"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="signupPassword">Password <span class="label-note">(min 6 characters)</span></label>
+          <div class="input-wrap">
+            <span class="material-symbols-outlined input-icon">lock</span>
+            <input
+              type="password"
+              id="signupPassword"
+              class="form-input"
+              placeholder="Create a password"
+              autocomplete="new-password"
+              required
+              minlength="6"
+            />
+            <button type="button" class="toggle-pw" id="toggleSignupPw" aria-label="Show password">
+              <span class="material-symbols-outlined">visibility</span>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <span class="material-symbols-outlined">how_to_reg</span>
+          Create Account
+        </button>
+
+      </form>
+
+    </div><!-- end .auth-card -->
+
+
+    <!-- ── Decorative promo panel (hidden on small screens via CSS) ── -->
+    <div class="auth-side">
+      <div class="auth-side-content">
+        <span class="material-symbols-outlined side-icon">eco</span>
+        <h2>Every report helps.</h2>
+        <p>
+          Thousands of citizens use GreenSweep to flag illegal dumping,
+          broken infrastructure, and pollution — and watch it get fixed.
+        </p>
+        <ul class="side-list">
+          <li>
+            <span class="material-symbols-outlined side-list-icon">check_circle</span>
+            Real-time GPS reporting
+          </li>
+          <li>
+            <span class="material-symbols-outlined side-list-icon">check_circle</span>
+            Track your report status
+          </li>
+          <li>
+            <span class="material-symbols-outlined side-list-icon">check_circle</span>
+            Direct line to city officials
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </main><!-- end .auth-wrapper -->
+
+
+  <!-- ══════════════════════════════════════════
+       SCRIPTS
+       auth.js must load FIRST — Login.js uses it
+       ══════════════════════════════════════════ -->
+  <script src="auth.js"></script>
+  <script src="Login.js"></script>
+
+</body>
+</html>

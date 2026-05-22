@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report an Issue | GreenSweep</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="Report.css" />
+</head>
+<body>
+
+  <!-- sidebar toggle checkbox hack -->
+  <input type="checkbox" id="sidebarToggle" class="sidebar-checkbox" />
+  <label for="sidebarToggle" class="sidebar-overlay"></label>
+
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <span class="material-symbols-outlined logo-icon">eco</span>
+        <strong>GreenSweep</strong>
+      </div>
+      <label for="sidebarToggle" class="sidebar-close">
+        <span class="material-symbols-outlined">close</span>
+      </label>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="Home.html">Home</a>
+      <a href="Awarness.html">Awareness</a>
+      <a href="Report.html" class="active">Report</a>
+      <a href="Admin.html">Admin</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <!-- filled by JS with user name or Sign In button -->
+      <div id="sidebarUserArea"></div>
+    </div>
+  </div>
+
+  <!-- top bar -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <a href="Home.html" class="logo">
+        <span class="material-symbols-outlined logo-icon">eco</span>
+        <strong>GreenSweep</strong>
+      </a>
+      <nav class="desktop-nav">
+        <a href="Home.html">Home</a>
+        <a href="Awarness.html">Awareness</a>
+        <a href="Report.html" class="active">Report</a>
+        <a href="Admin.html">Admin</a>
+      </nav>
+    </div>
+    <div class="desktop-right">
+      <div class="search-box">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input type="text" placeholder="Search…" />
+      </div>
+      <!-- filled by JS -->
+      <div id="topbarUserArea"></div>
+    </div>
+    <div class="topbar-mobile-right">
+      <div class="search-box mobile-search">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input type="text" placeholder="Search…" />
+      </div>
+      <label for="sidebarToggle" class="hamburger">
+        <span class="material-symbols-outlined">menu</span>
+      </label>
+    </div>
+  </header>
+
+  <!-- login wall — shown when not logged in, hidden by JS when logged in -->
+  <div class="login-wall" id="loginWall">
+    <div class="login-wall-card">
+      <span class="material-symbols-outlined login-wall-icon">lock</span>
+      <h2>Login Required</h2>
+      <p>You must be signed in to submit a report.</p>
+      <a href="Login.html?next=Report.html" class="btn-primary">Login or Sign Up</a>
+    </div>
+  </div>
+
+  <!-- actual form — hidden until JS confirms login -->
+  <main class="container form-hidden" id="reportMain">
+
+    <div class="breadcrumb">
+      <a href="Home.html">Home</a>
+      <span class="material-symbols-outlined tiny">chevron_right</span>
+      <span>Report an Issue</span>
+    </div>
+
+    <div class="page-heading">
+      <h1>Report an Issue</h1>
+      <p>Pinpoint waste or infrastructure problems so our crews can fix them fast.</p>
+    </div>
+
+    <!-- reporter info banner (filled by JS) -->
+    <div class="reporter-banner" id="reporterBanner">
+      <span class="material-symbols-outlined">account_circle</span>
+      <span id="reporterName">Loading…</span>
+      <span class="reporter-role" id="reporterRole"></span>
+    </div>
+
+    <!-- alert box -->
+    <div class="alert alert--hidden" id="alertBox"></div>
+
+    <div class="report-grid">
+
+      <!-- LEFT COLUMN -->
+      <div class="left-col">
+
+        <!-- incident details -->
+        <section class="card">
+          <div class="card-section-title">
+            <span class="material-symbols-outlined green">description</span>
+            <h2>Incident Details</h2>
+          </div>
+
+          <div class="form-group">
+            <label for="wasteCategory">Waste Category</label>
+            <div class="select-wrap">
+              <select id="wasteCategory">
+                <option value="">Select waste type…</option>
+                <option value="construction">Construction Debris</option>
+                <option value="hazardous">Hazardous Waste / Chemicals</option>
+                <option value="furniture">Furniture / Large Appliances</option>
+                <option value="tires">Automotive / Tires</option>
+                <option value="trash">General Household Trash</option>
+                <option value="graffiti">Graffiti / Vandalism</option>
+                <option value="infrastructure">Infrastructure (lights, potholes…)</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="material-symbols-outlined select-icon">expand_more</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="urgency">Urgency Level</label>
+            <div class="select-wrap">
+              <select id="urgency">
+                <option value="low">Low — not urgent</option>
+                <option value="medium" selected>Medium — needs attention soon</option>
+                <option value="high">High — urgent</option>
+                <option value="critical">Critical — immediate danger</option>
+              </select>
+              <span class="material-symbols-outlined select-icon">expand_more</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Detailed Description</label>
+            <textarea id="description" rows="5" placeholder="Describe the size, type, or accessibility of the issue…"></textarea>
+          </div>
+        </section>
+
+        <!-- photo upload -->
+        <section class="card">
+          <div class="card-section-title">
+            <span class="material-symbols-outlined green">photo_camera</span>
+            <h2>Visual Evidence</h2>
+          </div>
+          <label class="upload-zone" for="photoInput">
+            <div class="upload-icon">
+              <span class="material-symbols-outlined">upload_file</span>
+            </div>
+            <p class="upload-title">Upload photos of the issue</p>
+            <p class="upload-sub">Drag &amp; drop or click to browse</p>
+            <p class="upload-note">Max 5 images · PNG, JPG</p>
+          </label>
+          <input type="file" id="photoInput" class="file-input-hidden" accept="image/*" multiple />
+          <!-- preview thumbnails go here -->
+          <div class="photo-preview" id="photoPreview"></div>
+        </section>
+
+      </div><!-- end left-col -->
+
+      <!-- RIGHT COLUMN -->
+      <div class="right-col">
+
+        <!-- location card -->
+        <section class="card">
+          <div class="card-section-title">
+            <span class="material-symbols-outlined green">location_on</span>
+            <h2>Location</h2>
+          </div>
+
+          <!-- GPS button -->
+          <button class="btn-gps" id="btnGps">
+            <span class="material-symbols-outlined">my_location</span>
+            Use My Current Location
+          </button>
+
+          <div class="coords-row">
+            <div class="form-group">
+              <label for="inputLat">Latitude</label>
+              <input type="text" id="inputLat" class="form-input" placeholder="e.g. 37.7749" />
+            </div>
+            <div class="form-group">
+              <label for="inputLng">Longitude</label>
+              <input type="text" id="inputLng" class="form-input" placeholder="e.g. -122.4194" />
+            </div>
+          </div>
+
+          <!-- status line shown while GPS is working -->
+          <p class="gps-status" id="gpsStatus"></p>
+        </section>
+
+        <!-- submit actions -->
+        <section class="card">
+          <button class="btn-submit" id="btnSubmit">
+            <span class="material-symbols-outlined">send</span>
+            Submit Report
+          </button>
+          <div class="action-row">
+            <button class="btn-draft" id="btnDraft">
+              <span class="material-symbols-outlined tiny">save</span> Save Draft
+            </button>
+            <button class="btn-cancel" id="btnCancel">Cancel</button>
+          </div>
+        </section>
+
+      </div><!-- end right-col -->
+    </div><!-- end report-grid -->
+
+    <div class="report-footer">
+      <p class="muted-sm">© 2026 GreenSweep Environmental Services. All rights reserved.</p>
+    </div>
+
+  </main>
+
+  <script src="auth.js"></script>
+  <script src="Report.js"></script>
+</body>
+</html>
